@@ -1,0 +1,133 @@
+@keyframes object-rotate {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        /* turn이라는 단위는 정확히 한 바퀴를 돌리라는 의미입니다. */
+        transform: rotateY(1turn);
+    }
+}
+
+@keyframes scene-rotate {
+    0% {
+        transform: rotateX(0) rotateZ(0);
+    }
+    100% {
+        transform: rotateX(10deg) rotateZ(-20deg);
+    }
+}
+
+body {
+    background-color: black;
+    width: 100vh;
+    color: white;
+} 
+
+.container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scene {
+    transform-style: preserve-3d;
+    /* 나중에 회전 */
+    animation: scene-rotate 8s linear infinite alternate;
+}
+
+.planet {
+    background-image: url('./planet.png') ;
+    background-size: 105%;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    top: 400px;
+    left: 800px;
+    border-radius: 50%;
+    width: 600px;
+    height: 600px;
+    box-shadow: 5px 0 100px;
+}
+
+.fly {
+    position:absolute;
+    top: 540px;
+    left: 700px;
+    border-radius: 50%;
+    background-image: url('./fly.png') ;
+    background-size: auto;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 200px;
+    animation: object-rotate 15s linear infinite;
+    transform-style: preserve-3d;
+    box-shadow: 3px 0 2px;
+    /* background-color: rgba(33, 250, 26, 0.6); */
+}
+
+.fly1 {
+    position: absolute;
+    top: 600px;
+    left: -200px;
+    border-radius: 50%;
+    background-image: url('./fly.png') ;
+    background-size: auto;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 200px;
+    animation: object-rotate 7s linear infinite;
+    transform-style: preserve-3d;
+    box-shadow: 3px 0 2px;
+    /* background-color: rgb(26, 187, 250,0.8); */
+}
+
+.fly2 {
+    position:absolute;
+    top: -250px;
+    left: 200px;
+    border-radius: 50%;
+    background-image: url('./fly.png') ;
+    background-size: auto;
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 200px;
+    animation: object-rotate 10s linear infinite;
+    transform-style: preserve-3d;
+    
+   
+}
+.fly .word, .fly1 .word, .fly2 .word {
+    transform-style: preserve-3d;
+}
+.fly span {
+    position: absolute;
+    transform: rotateY(calc(var(--char-index)*1.3deg)) translateZ(3500px);
+}
+
+.fly1 span {
+    position: absolute;
+    transform: rotateY(calc(var(--char-index)*2deg)) translateZ(3000px);
+}
+.fly2 span {
+    position: absolute;
+    transform: rotateY(calc(var(--char-index)*3deg)) translateZ(3000px);
+}
+
+.circle span ,.fly{
+    /* background-color: goldenrod; */
+    position: absolute;
+    transform: rotateY(calc(var(--char-index)*0.3deg)) translateZ(800px);
+}
+
+.word:nth-child(1) .char:nth-child(1) {
+    background-image: url('./fly.png');
+    background-repeat: no-repeat;
+    margin-top: -500px;
+    width: 500px;
+    height: 500px;
+}
